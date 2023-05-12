@@ -1,0 +1,22 @@
+#f{
+    background-color: #ffffff;
+    height: 90%;
+    width: 600px;
+}
+.yellow-box{
+    background-color: #f0bb25;
+    width: 100%;
+    height: 10px;
+}
+.bt{
+    background-color: #f0bb25;
+    border: none;
+    color: white;
+    font-size: large;
+    height: 50px;
+    width: 90%;
+}
+.body{
+    background-color: #f3f3f3;
+    height: 100vh;
+}
