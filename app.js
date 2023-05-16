@@ -1,3 +1,6 @@
+
+label = document.getElementById('label');
+score = document.getElementById('score');
 document.getElementById("myForm").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent the form from submitting and refreshing the page
     // Get form values
@@ -30,8 +33,15 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
       .then(response => response.json())
       .then(data => {
         // Traitement de la réponse de l'API
-        console.log("Hello");
         console.log(data);
+        var modal1 = new bootstrap.Modal(document.getElementById('exampleModalToggle'));
+        modal1.toggle();
+        label.textContent = data.predictions.predicted_label
+        score.textContent = data.predictions.confidence_score
+        setTimeout(() => {
+          modal1.toggle();
+        }, 6000)
+        //document.getElementById('pred').innerHTML = data.predictions.confidence_score;
       })
       .catch(error => {
         // Gestion des erreurs

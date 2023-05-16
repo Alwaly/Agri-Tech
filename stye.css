@@ -1,7 +1,8 @@
 #f{
     background-color: #ffffff;
-    height: 90%;
+    /*height: 90%;*/
     width: 600px;
+    margin-bottom: 30px;
 }
 .yellow-box{
     background-color: #f0bb25;
