@@ -1,6 +1,5 @@
 document.getElementById("myForm").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent the form from submitting and refreshing the page
-    console.log("hello")
     // Get form values
     var n = document.getElementById("n").value;
     var p = document.getElementById("p").value;
@@ -11,18 +10,35 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
     var rainfall = document.getElementById("rainfall").value;
     
     // Create data object with form values
-    var data = {
-        n: n,
-        p: p,
-        k: k,
+    var postData = {
+        N: n,
+        P: p,
+        K: k,
         temperature: temperature,
         humidity: humidity,
         ph: ph,
         rainfall: rainfall
     };
-    console.log(JSON.stringify(data));
+    //console.log(JSON.stringify(data));
+    fetch("http://127.0.0.1:8000/predict", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(postData)
+    })
+      .then(response => response.json())
+      .then(data => {
+        // Traitement de la réponse de l'API
+        console.log("Hello");
+        console.log(data);
+      })
+      .catch(error => {
+        // Gestion des erreurs
+        console.error(error);
+      });
     // Make the POST request
-    var xhr = new XMLHttpRequest();
+    /*var xhr = new XMLHttpRequest();
     xhr.open("POST", "http://127.0.0.1:8000/predict", true);
     xhr.setRequestHeader("content-type", "application/json");
     xhr.onreadystatechange = function() {
@@ -32,6 +48,6 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
       }
     };
     
-    xhr.send(JSON.stringify(data));
+    xhr.send(JSON.stringify(data));*/
   });
-  
+
